@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="lab1-generator">
   <diagram name="Activity - Оплата бронирования" id="activityPaymentDiagram">
-    <mxGraphModel dx="1380" dy="742" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1235" dy="664" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -67,8 +67,17 @@
         <mxCell id="E10" edge="1" parent="1" source="D2" style="html=1;" target="A4" value="да">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="E11" edge="1" parent="1" source="A4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="Merge" value="">
+        <mxCell id="E11" edge="1" parent="1" source="HWEYoh4kY56jmB_LEgzm-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="Merge" value="">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HWEYoh4kY56jmB_LEgzm-7" edge="1" parent="1" source="A4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="HWEYoh4kY56jmB_LEgzm-5" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="535" as="sourcePoint" />
+            <mxPoint x="358" y="298" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HWEYoh4kY56jmB_LEgzm-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;arcSize=30;" value="&lt;code&gt;Зафиксировать отправку напоминания&lt;/code&gt;" vertex="1">
+          <mxGeometry height="70" width="180" x="580" y="500" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
