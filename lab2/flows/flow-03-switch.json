@@ -1,0 +1,124 @@
+[
+    {
+        "id": "2597467a4edc1aa9",
+        "type": "tab",
+        "label": "03-switch",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "741ac7bfca92079f",
+        "type": "inject",
+        "z": "2597467a4edc1aa9",
+        "name": "Число",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "15",
+        "payloadType": "num",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "88d556255a1ea9e2"
+            ]
+        ]
+    },
+    {
+        "id": "88d556255a1ea9e2",
+        "type": "function",
+        "z": "2597467a4edc1aa9",
+        "name": "Проверка",
+        "func": "// Принимаем число, определяем статус\nconst input = msg.payload;\n\nlet status;\nif (input > 10) {\n    status = \"большое\";\n} else {\n    status = \"маленькое\";\n}\n\nmsg.payload = status;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 300,
+        "wires": [
+            [
+                "8051893afbf3e25b"
+            ]
+        ]
+    },
+    {
+        "id": "8051893afbf3e25b",
+        "type": "switch",
+        "z": "2597467a4edc1aa9",
+        "name": "Ветвление",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "большое",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "eb123fdcc24ad21e"
+            ],
+            [
+                "32f34e1e01b2f6ad"
+            ]
+        ]
+    },
+    {
+        "id": "eb123fdcc24ad21e",
+        "type": "debug",
+        "z": "2597467a4edc1aa9",
+        "name": "Большое",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "32f34e1e01b2f6ad",
+        "type": "debug",
+        "z": "2597467a4edc1aa9",
+        "name": "Маленькое",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 340,
+        "wires": []
+    }
+]
