@@ -1,0 +1,76 @@
+[
+    {
+        "id": "2d1435e62dfe5990",
+        "type": "tab",
+        "label": "02-function",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d4ba0d692687e1ed",
+        "type": "inject",
+        "z": "2d1435e62dfe5990",
+        "name": "Число",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "15",
+        "payloadType": "num",
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "5469dd9185599d08"
+            ]
+        ]
+    },
+    {
+        "id": "5469dd9185599d08",
+        "type": "function",
+        "z": "2d1435e62dfe5990",
+        "name": "Обработка",
+        "func": "// Принимаем число, обрабатываем, возвращаем объект\nconst input = msg.payload;\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = [];\n\n// Цикл for: удваиваем каждое число\nfor (let i = 0; i < numbers.length; i++) {\n    doubled.push(numbers[i] * 2);\n}\n\n// Условие if/else: большое число или маленькое\nlet status;\nif (input > 10) {\n    status = \"большое\";\n} else {\n    status = \"маленькое\";\n}\n\n// Формируем объект-результат\nconst result = {\n    original: input,\n    status: status,\n    doubled: doubled,\n    user: \"Коток\"\n};\n\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "102f2ee573c40f09"
+            ]
+        ]
+    },
+    {
+        "id": "102f2ee573c40f09",
+        "type": "debug",
+        "z": "2d1435e62dfe5990",
+        "name": "Результат",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 340,
+        "wires": []
+    }
+]
