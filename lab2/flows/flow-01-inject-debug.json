@@ -1,0 +1,56 @@
+[
+    {
+        "id": "549ffef5442db308",
+        "type": "tab",
+        "label": "01-inject-debug",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "284b201d22f69492",
+        "type": "inject",
+        "z": "549ffef5442db308",
+        "name": "Коток",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lab2/kotok/basic",
+        "payload": "Коток",
+        "payloadType": "str",
+        "x": 380,
+        "y": 340,
+        "wires": [
+            [
+                "8225d39374b82037"
+            ]
+        ]
+    },
+    {
+        "id": "8225d39374b82037",
+        "type": "debug",
+        "z": "549ffef5442db308",
+        "name": "Вывод",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 340,
+        "wires": []
+    }
+]
