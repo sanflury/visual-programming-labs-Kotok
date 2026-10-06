@@ -1,0 +1,71 @@
+[
+    {
+        "id": "326c463dce4b1b8e",
+        "type": "tab",
+        "label": "05-template",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "dfff6d2ee3d6f657",
+        "type": "inject",
+        "z": "326c463dce4b1b8e",
+        "name": "Данные студента",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Коток\",\"group\":\"УИР-241\",\"year\":2026}",
+        "payloadType": "json",
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "2861a2d8d7c66cc2"
+            ]
+        ]
+    },
+    {
+        "id": "2861a2d8d7c66cc2",
+        "type": "template",
+        "z": "326c463dce4b1b8e",
+        "name": "Шаблон",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Студент: {{payload.name}}\nГруппа: {{payload.group}}\nГод: {{payload.year}}",
+        "output": "str",
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "ebc61ac5161425b8"
+            ]
+        ]
+    },
+    {
+        "id": "ebc61ac5161425b8",
+        "type": "debug",
+        "z": "326c463dce4b1b8e",
+        "name": "Результат",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 320,
+        "wires": []
+    }
+]
