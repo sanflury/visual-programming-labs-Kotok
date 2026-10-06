@@ -1,0 +1,76 @@
+[
+    {
+        "id": "08dd00b819576b4f",
+        "type": "tab",
+        "label": "06-http-request",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "718fb4ebdc144c9c",
+        "type": "inject",
+        "z": "08dd00b819576b4f",
+        "name": "Запрос",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "2f080a4f83b70792"
+            ]
+        ]
+    },
+    {
+        "id": "2f080a4f83b70792",
+        "type": "http request",
+        "z": "08dd00b819576b4f",
+        "name": "CatFact",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://catfact.ninja/fact",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "d5d754612712ab11"
+            ]
+        ]
+    },
+    {
+        "id": "d5d754612712ab11",
+        "type": "debug",
+        "z": "08dd00b819576b4f",
+        "name": "Ответ API",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 320,
+        "wires": []
+    }
+]
