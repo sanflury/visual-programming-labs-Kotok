@@ -1,0 +1,97 @@
+[
+    {
+        "id": "977a987d1a6fd7dd",
+        "type": "tab",
+        "label": "04-change",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "943999d2246bcbbe",
+        "type": "inject",
+        "z": "977a987d1a6fd7dd",
+        "name": "Старт",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "исходное",
+        "payloadType": "str",
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "1feddfe990bdab87"
+            ]
+        ]
+    },
+    {
+        "id": "1feddfe990bdab87",
+        "type": "change",
+        "z": "977a987d1a6fd7dd",
+        "name": "Изменить поля",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "lab2/kotok/change",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "изменено",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "a1907bf2d9e3290d"
+            ]
+        ]
+    },
+    {
+        "id": "a1907bf2d9e3290d",
+        "type": "debug",
+        "z": "977a987d1a6fd7dd",
+        "name": "Результат",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 280,
+        "wires": []
+    }
+]
