@@ -1,0 +1,142 @@
+[
+    {
+        "id": "37cef64701632d21",
+        "type": "tab",
+        "label": "07-mqtt",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7cf407d4d4b3bf40",
+        "type": "inject",
+        "z": "37cef64701632d21",
+        "name": "Датчик",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "0f861ee9a1af31fe"
+            ]
+        ]
+    },
+    {
+        "id": "0f861ee9a1af31fe",
+        "type": "function",
+        "z": "37cef64701632d21",
+        "name": "Случайное значение",
+        "func": "msg.payload = Math.round(Math.random() * 100);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "23c5e5788f802990"
+            ]
+        ]
+    },
+    {
+        "id": "23c5e5788f802990",
+        "type": "mqtt out",
+        "z": "37cef64701632d21",
+        "name": "Публикация",
+        "topic": "student/kotok/lab2/temp",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e9edb7fc8c1c10b9",
+        "x": 590,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "74de2c9af851a1cd",
+        "type": "debug",
+        "z": "37cef64701632d21",
+        "name": "Принято",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "efaf04681e306c6c",
+        "type": "mqtt in",
+        "z": "37cef64701632d21",
+        "name": "Подписка",
+        "topic": "student/kotok/lab2/temp",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e9edb7fc8c1c10b9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 360,
+        "wires": [
+            [
+                "74de2c9af851a1cd"
+            ]
+        ]
+    },
+    {
+        "id": "e9edb7fc8c1c10b9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
