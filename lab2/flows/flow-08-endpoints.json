@@ -1,0 +1,157 @@
+[
+    {
+        "id": "aca1d96b781a9e7e",
+        "type": "tab",
+        "label": "08-endpoints",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "09846d884c2614eb",
+        "type": "http in",
+        "z": "aca1d96b781a9e7e",
+        "name": "text-in",
+        "url": "/api/text",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "3327bd1919b66145"
+            ]
+        ]
+    },
+    {
+        "id": "524681c93c47f69c",
+        "type": "http response",
+        "z": "aca1d96b781a9e7e",
+        "name": "text-out",
+        "statusCode": "200",
+        "headers": {},
+        "x": 420,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "3327bd1919b66145",
+        "type": "function",
+        "z": "aca1d96b781a9e7e",
+        "name": "text-payload",
+        "func": "msg.payload = \"Привет от Коток! Это текстовый ответ.\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 300,
+        "wires": [
+            [
+                "524681c93c47f69c"
+            ]
+        ]
+    },
+    {
+        "id": "6de0d4fe7c6b801f",
+        "type": "http in",
+        "z": "aca1d96b781a9e7e",
+        "name": "info-in",
+        "url": "/api/info",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 380,
+        "wires": [
+            [
+                "1cefd1c2a9f6e827"
+            ]
+        ]
+    },
+    {
+        "id": "82da321c4ed5ddc8",
+        "type": "http response",
+        "z": "aca1d96b781a9e7e",
+        "name": "info-out",
+        "statusCode": "200",
+        "headers": {},
+        "x": 440,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "1cefd1c2a9f6e827",
+        "type": "function",
+        "z": "aca1d96b781a9e7e",
+        "name": "info-payload",
+        "func": "msg.payload = {\n    student: \"Коток\",\n    group: \"УИР-241\",\n    lab: 2,\n    timestamp: Date.now()\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 380,
+        "wires": [
+            [
+                "82da321c4ed5ddc8"
+            ]
+        ]
+    },
+    {
+        "id": "f566cfea11090171",
+        "type": "http in",
+        "z": "aca1d96b781a9e7e",
+        "name": "items-in",
+        "url": "/api/items",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 460,
+        "wires": [
+            [
+                "f98e4a60047faed5"
+            ]
+        ]
+    },
+    {
+        "id": "6ee2539a9de87a8f",
+        "type": "http response",
+        "z": "aca1d96b781a9e7e",
+        "name": "items-out",
+        "statusCode": "200",
+        "headers": {},
+        "x": 440,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f98e4a60047faed5",
+        "type": "function",
+        "z": "aca1d96b781a9e7e",
+        "name": "items-logic",
+        "func": "// Получаем query-параметр id\nconst id = msg.req.query.id;\n\n// 400 — если id не передан\nif (!id) {\n    msg.statusCode = 400;\n    msg.payload = {\n        error: \"Bad Request\",\n        message: \"Параметр id обязателен\"\n    };\n    return msg;\n}\n\n// 404 — если id не 1 и не 2\nif (id !== \"1\" && id !== \"2\") {\n    msg.statusCode = 404;\n    msg.payload = {\n        error: \"Not Found\",\n        message: \"Элемент с id=\" + id + \" не найден\"\n    };\n    return msg;\n}\n\n// 200 — успех\nmsg.statusCode = 200;\nmsg.payload = {\n    id: id,\n    name: \"Номер \" + id,\n    price: id === \"1\" ? 5000 : 8000,\n    currency: \"BYN\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 460,
+        "wires": [
+            [
+                "6ee2539a9de87a8f"
+            ]
+        ]
+    }
+]
