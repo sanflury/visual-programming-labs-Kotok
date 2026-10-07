@@ -1,0 +1,134 @@
+[
+    {
+        "id": "6eb6a7e7fb7001ef",
+        "type": "tab",
+        "label": "11-files",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c3d2bb95f3f945c2",
+        "type": "inject",
+        "z": "6eb6a7e7fb7001ef",
+        "name": "Записать",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 80,
+        "y": 280,
+        "wires": [
+            [
+                "d683efba52958dbc"
+            ]
+        ]
+    },
+    {
+        "id": "d683efba52958dbc",
+        "type": "function",
+        "z": "6eb6a7e7fb7001ef",
+        "name": "Формирование JSON",
+        "func": "const record = {\n    student: \"Коток\",\n    group: \"УИР-241\",\n    lab: 2,\n    timestamp: new Date().toISOString(),\n    random: Math.round(Math.random() * 1000)\n};\n\nmsg.payload = JSON.stringify(record) + \"\\n\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "848d519815d14a6d"
+            ]
+        ]
+    },
+    {
+        "id": "7b1e611b50e1926e",
+        "type": "inject",
+        "z": "6eb6a7e7fb7001ef",
+        "name": "Прочитать",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 380,
+        "wires": [
+            [
+                "83f501ce6db1314c"
+            ]
+        ]
+    },
+    {
+        "id": "0ef6168f15cef25f",
+        "type": "debug",
+        "z": "6eb6a7e7fb7001ef",
+        "name": "Содержимое файла",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "848d519815d14a6d",
+        "type": "file",
+        "z": "6eb6a7e7fb7001ef",
+        "name": "Запись в файл",
+        "filename": "/data/records.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 560,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "83f501ce6db1314c",
+        "type": "file in",
+        "z": "6eb6a7e7fb7001ef",
+        "name": "Чтение из файла",
+        "filename": "/data/records.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 270,
+        "y": 380,
+        "wires": [
+            [
+                "0ef6168f15cef25f"
+            ]
+        ]
+    }
+]
