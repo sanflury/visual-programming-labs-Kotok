@@ -1,0 +1,72 @@
+[
+    {
+        "id": "17e85356cb9468bb",
+        "type": "tab",
+        "label": "12-context",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5be8c176f87cb2d6",
+        "type": "inject",
+        "z": "17e85356cb9468bb",
+        "name": "Клик",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "+1",
+        "payloadType": "str",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "c027171675efcba1"
+            ]
+        ]
+    },
+    {
+        "id": "c027171675efcba1",
+        "type": "function",
+        "z": "17e85356cb9468bb",
+        "name": "Счётчик в flow context",
+        "func": "// Читаем счётчик из flow context (если нет — начинаем с 0)\nlet counter = flow.get(\"myCounter\") || 0;\n\n// Увеличиваем на 1\ncounter = counter + 1;\n\n// Сохраняем обратно в flow context\nflow.set(\"myCounter\", counter);\n\n// Формируем ответ\nmsg.payload = {\n    message: \"Счётчик увеличен\",\n    counter: counter,\n    student: \"Коток\",\n    group: \"УИР-241\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "03a6908f42e0c5bf"
+            ]
+        ]
+    },
+    {
+        "id": "03a6908f42e0c5bf",
+        "type": "debug",
+        "z": "17e85356cb9468bb",
+        "name": "Текущее значение",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 280,
+        "wires": []
+    }
+]
