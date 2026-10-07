@@ -1,0 +1,100 @@
+[
+    {
+        "id": "fe8e296c6169c0fa",
+        "type": "tab",
+        "label": "10-telegram",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "525ce87ee4366167",
+        "type": "telegram receiver",
+        "z": "fe8e296c6169c0fa",
+        "name": "Приём сообщений",
+        "bot": "5bf0e7ee4930d0ee",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "hasinput": false,
+        "inputs": 0,
+        "handleallupdates": false,
+        "handleprocessupdates": false,
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "7cf5c8ee88e18f23"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7cf5c8ee88e18f23",
+        "type": "function",
+        "z": "fe8e296c6169c0fa",
+        "name": "Обработка",
+        "func": "const text = msg.payload.content;\nconst chatId = msg.payload.chatId;\n\nif (text === \"/start\") {\n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: \"Привет! Я бот лабораторной №2. Коток, УИР-241.\\n\\nНапиши что угодно — я повторю.\"\n    };\n} else {\n    msg.payload = {\n        chatId: chatId,\n        type: \"message\",\n        content: \"Эхо: \" + text\n    };\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "002c8f8790a14775"
+            ]
+        ]
+    },
+    {
+        "id": "002c8f8790a14775",
+        "type": "telegram sender",
+        "z": "fe8e296c6169c0fa",
+        "name": "Отправка",
+        "bot": "5bf0e7ee4930d0ee",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5bf0e7ee4930d0ee",
+        "type": "telegram bot",
+        "botname": "KotokLab2Bot",
+        "usernames": "sashunyak",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": "1000",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "d72627a2bb5fd7b2",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-telegrambot": "19.0.3"
+        }
+    }
+]
