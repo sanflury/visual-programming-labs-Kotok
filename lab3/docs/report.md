@@ -120,3 +120,35 @@
 
 - `screenshots/04.1-data-type.png` — поля сущности Appointment.
 - `screenshots/04.1-data-records.png` — 3 записи в App Data.
+
+### 4.2. Workflows CRUD
+
+Реализован полный CRUD для сущности `Appointment` через workflows
+на странице `appointments`:
+
+**Create (создание):**
+- Кнопка «Добавить приём» открывает модальную форму.
+- Форма содержит поля: patientName, doctorName, appointmentDate,
+  price, cabinetNumber, isCompleted.
+- По кнопке «Сохранить» создаётся новая запись Appointment.
+
+**Read (чтение):**
+- Список приёмов отображается через Repeating Group.
+- Каждая карточка показывает данные из базы.
+
+**Update (обновление):**
+- Кнопка «Редактировать» открывает форму с заполненными данными.
+- При изменении и сохранении запись обновляется в базе.
+
+**Delete (удаление):**
+- Кнопка «Удалить» показывает диалог подтверждения.
+- После подтверждения запись удаляется из базы.
+
+**Скриншоты:**
+- `screenshots/08-appointments-page.png` — страница приёмов (Read).
+- `screenshots/08-workflow-create.png` — форма создания (Create).
+- `screenshots/09-workflow-create-result.png` — результат создания.
+- `screenshots/10-workflow-update-form.png` — форма редактирования (Update).
+- `screenshots/11-workflow-update-result.png` — результат изменения.
+- `screenshots/08-workflow-delete-confirm.png` — подтверждение удаления (Delete).
+- `screenshots/09-workflow-delete-result.png` — результат удаления.
