@@ -1,0 +1,120 @@
+{
+  "name": "09-redis-set",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6b6971c5-7c77-47b0-a233-25a6927ac354",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "kotok",
+        "value": "Тестовое значение из n8n"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "e72d04ff-d078-451b-82f0-f75769a49b0c",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "1orajrteNhfdtuT6",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "kotok",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "44a9c067-14d6-4320-b694-2714dbcd9246",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "1orajrteNhfdtuT6",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Получаем значение из Redis\nconst item = $input.first().json;\n\nconsole.log(\"Redis GET result:\", JSON.stringify(item, null, 2));\n\nreturn [{\n  json: {\n    key: \"kotok\",\n    value: item.propertyName || item.value || item\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "135401c8-eb36-4d5a-84e7-87c1825ea2e4",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "6bc26626-3066-435d-a67c-599b16a9c0df",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5e4b9aaddbac2c956284545dd9df7370c5c03dcc76c013e4feeb9967675d53ca"
+  },
+  "nodeGroups": [],
+  "id": "W3cg0rlSF4aOnA7Q",
+  "tags": []
+}
