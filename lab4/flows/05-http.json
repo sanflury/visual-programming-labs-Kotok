@@ -1,0 +1,86 @@
+{
+  "name": "05-http",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "53c524aa-f4c7-41dd-b995-64aece982326",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://catfact.ninja/fact",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "c3f1a5a7-a466-47ca-900e-73b5e8185670",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Получаем ответ от API\nconst item = $input.first().json;\n\n// Выводим в консоль весь ответ\nconsole.log(\"API response:\", JSON.stringify(item, null, 2));\n\n// Возвращаем объект\nreturn [{\n  json: {\n    response: item\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "1f32367e-c266-4a3d-87d2-da4c621767fc",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8439aadb-9d0b-4df2-a2bb-252527ae7bb5",
+  "meta": {
+    "instanceId": "5e4b9aaddbac2c956284545dd9df7370c5c03dcc76c013e4feeb9967675d53ca"
+  },
+  "nodeGroups": [],
+  "id": "wsvMl2rCjfuIyELZ",
+  "tags": []
+}
