@@ -1,0 +1,77 @@
+{
+  "name": "02-code",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "307ca6df-6cf5-40b5-a5e5-3962525d61c6",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Базовые элементы JS: let/const, массив, объект, цикл for, if/else\n\nconst userName = \"Коток\";\nlet counter = 0;\n\n// Массив\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = [];\n\n// Цикл for\nfor (let i = 0; i < numbers.length; i++) {\n  doubled.push(numbers[i] * 2);\n  counter++;\n}\n\n// Условие if/else\nlet status;\nif (counter > 3) {\n  status = \"большой массив\";\n} else {\n  status = \"маленький массив\";\n}\n\n// Объект-результат\nconst result = {\n  user: userName,\n  status: status,\n  doubled: doubled,\n  count: counter\n};\n\n// Возвращаем объект с полем payload\nreturn [{\n  json: {\n    payload: result\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "9726c689-d2ed-4299-aab3-b7ba1541eeb9",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "215e0a84-1ce1-492d-9593-b2255b40cba0",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "064602c4-d716-426e-9c6e-1fb93314bd39",
+  "meta": {
+    "instanceId": "5e4b9aaddbac2c956284545dd9df7370c5c03dcc76c013e4feeb9967675d53ca"
+  },
+  "nodeGroups": [],
+  "id": "v6A94QWQ1cSDuoZj",
+  "tags": []
+}
