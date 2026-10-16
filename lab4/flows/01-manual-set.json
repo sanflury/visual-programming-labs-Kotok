@@ -1,0 +1,95 @@
+{
+  "name": "01-manual-set",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "453b589a-d628-4181-822e-fb8950a26d0c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d768211e-a5e1-4fb5-98b5-37c02a37da03",
+              "name": "payload",
+              "value": " Коток",
+              "type": "string"
+            },
+            {
+              "id": "50b272cb-1393-442e-9f17-f59e047c5d65",
+              "name": "topic",
+              "value": "lab4/kotok/basic",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "09fae7eb-ca10-443c-9000-139c75c5803c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Получаем данные из Edit Fields\nconst items = $input.all();\nconst payload = items[0].json.payload;\nconst topic = items[0].json.topic;\n\n// Выводим в консоль\nconsole.log(\"Payload:\", payload);\nconsole.log(\"Topic:\", topic);\n\n// Возвращаем объект с полем payload\nreturn [{\n  json: {\n    payload: payload,\n    topic: topic\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "4802ecb1-c851-4667-afa4-c7937995f46b",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "29c7f456-5a54-4dc1-8480-899d4626746a",
+  "meta": {
+    "instanceId": "5e4b9aaddbac2c956284545dd9df7370c5c03dcc76c013e4feeb9967675d53ca"
+  },
+  "nodeGroups": [],
+  "id": "PO01kIk8ilkcFFWF",
+  "tags": []
+}
