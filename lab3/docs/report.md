@@ -202,9 +202,33 @@
 
 «Подключила публичный API **jsonplaceholder** через встроенный **API Connector** Bubble. Настроила 4 эндпоинта: GET, POST, PUT, DELETE. Для каждого создала кнопку на странице `api-demo`. Результат каждого вызова сохраняется в **Data Type `ApiResponse`** и отображается в **Repeating Group**. Перед сохранением нового результата старые записи удаляются — список показывает **только последний результат**. DELETE возвращает пустой объект — для него создаётся запись со статичным текстом «Пост удален», чтобы визуально показать результат. jsonplaceholder — тестовый API, он **не сохраняет изменения** между вызовами, но **все 4 метода успешно работают** — это видно по ответам в API Connector.»
 
+## Освоенные элементы и workflows
+
+### Design
+
+- Header / Body / Footer, Text, Button, Group, Repeating Group, Popup, Input (Date / Text / Number), Checkbox.
+- Компонент **Feature section** из библиотеки.
+- **Global variable** `primary-color` и стиль **Primary Label**.
+
+### Data
+
+- Data Types: `Appointment`, `ApiResponse`.
+- App Data (ручное добавление и просмотр записей).
+
+### Workflows
+
+- Create — `Create a new Appointment` / `Create a new ApiResponse`.
+- Read — Repeating Group с `Do a search for`.
+- Update — `Make changes to Appointment`.
+- Delete — `Delete a thing` + `Delete a list of things`.
+- Navigation — открытие / закрытие Popup.
+- Show confirm — подтверждение удаления.
+- API Connections — `Get Post`, `Create Post`, `Update Post`, `Delete Post`.
+
 ## Ссылки
 
-- **Dev-версия приложения:** `https://my-app-261014-18320.bubbleapps.io/version-test/api-demo`
+- **Dev-версия приложения:** [https://my-app-261014-18320.bubbleapps.io/version-test](https://my-app-261014-18320.bubbleapps.io/version-test)
+- **Страница API-демо:** [https://my-app-261014-18320.bubbleapps.io/version-test/api-demo](https://my-app-261014-18320.bubbleapps.io/version-test/api-demo)
 
 ## Выводы
 
@@ -213,3 +237,31 @@
 Отдельно разобралась с **API Connector**: подключила внешний API, настроила 4 вызова (GET, POST, PUT, DELETE), реализовала **сохранение и отображение результата** на странице.
 
 Главный практический вывод: **AI-агент сильно ускоряет** создание каркаса приложения, но **финальную логику и UI нужно проверять и дорабатывать вручную** — особенно в части условий видимости, работы с данными и API.
+
+## Подготовка к защите
+
+### Что показать
+
+1. Preview → страница `appointments` (список приёмов).
+2. Data → Data types → `Appointment` (поля).
+3. Data → App data → `Appointment` (записи).
+4. Workflow любой кнопки (Create / Update / Delete).
+5. Styles → Variables → Colors → `primary-color`.
+6. Styles → `Primary Label`.
+7. API Connector → 4 вызова.
+8. Preview → `api-demo` → клик по кнопкам.
+9. `git log --oneline` — история коммитов.
+
+### Что объяснить
+
+**AI сгенерировал:** каркас (header, body, footer, кнопки, карточки врачей, форма).
+
+**Вручную дорабатывала:** заголовок, Global variable, стиль, компонент, Data Type `Appointment`, workflows CRUD, страницу `api-demo`, API Connector, Data Type `ApiResponse`.
+
+**Как устроена Data:** `Appointment` (7 полей), `ApiResponse` (3 поля), разные типы.
+
+**Как работают workflows:** Create, Read, Update, Delete — каждый через отдельный workflow.
+
+**Global variables и стили:** `primary-color` — переменная цвета; `Primary Label` — стиль текста, использующий переменную.
+
+**Для ачивки API:** показать 4 вызова, страницу `api-demo`, объяснить `api.md`.
