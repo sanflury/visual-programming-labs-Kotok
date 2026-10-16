@@ -1,0 +1,63 @@
+{
+  "name": "06-schedule",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a92a0d34-c2ae-494e-b4e9-b39335e67e28",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Возвращаем текущее время\nconst now = new Date();\n\nreturn [{\n  json: {\n    currentTime: now.toISOString(),\n    timestamp: now.getTime(),\n    readable: now.toLocaleString(\"ru-RU\")\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "45a483f1-63f3-4e71-b8a9-6bb08ed25704",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "321738a0-7d9e-4c11-8445-7c107cb40964",
+  "meta": {
+    "instanceId": "5e4b9aaddbac2c956284545dd9df7370c5c03dcc76c013e4feeb9967675d53ca"
+  },
+  "nodeGroups": [],
+  "id": "068pdFG66K49wuRs",
+  "tags": []
+}
