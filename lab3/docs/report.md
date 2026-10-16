@@ -152,3 +152,64 @@
 - `screenshots/11-workflow-update-result.png` — результат изменения.
 - `screenshots/08-workflow-delete-confirm.png` — подтверждение удаления (Delete).
 - `screenshots/09-workflow-delete-result.png` — результат удаления.
+
+## Часть 5. Ачивка 1. API Connector
+
+### Подключённый API
+
+Использовала публичный тестовый API **jsonplaceholder.typicode.com** — не требует регистрации и токенов.
+
+### Настроенные эндпоинты
+
+В **API Connector** создана коллекция с 4 вызовами:
+
+| Метод | Название | URL |
+|---|---|---|
+| GET | Get Post | `jsonplaceholder.typicode.com/posts/1` |
+| POST | Create Post | `jsonplaceholder.typicode.com/posts` |
+| PUT | Update Post | `jsonplaceholder.typicode.com/posts/1` |
+| DELETE | Delete Post | `jsonplaceholder.typicode.com/posts/1` |
+
+**Use as:** `Data`, **Data type:** `JSON` — для всех вызовов.
+
+### Отображение в UI
+
+Создана страница **`api-demo`** с 4 кнопками. Каждая кнопка запускает свой workflow:
+
+1. Вызов API (Get/Create/Update/Delete Post).
+2. `Delete a list of ApiResponses` — очистка предыдущих результатов.
+3. `Create a new ApiResponse` — сохранение результата (title, body, id).
+
+Результат показывается в **Repeating Group** под кнопками через **`Current cell's ApiResponse's title`**.
+
+**Тип данных `ApiResponse`:** поля `title` (text), `body` (text), `id` (number).
+
+### Скриншоты
+
+- `screenshots/11-api-datatype-1.png` — Data Type `ApiResponse`.
+- `screenshots/11-api-datatype-2.png` — поля Data Type.
+- `screenshots/11-api-get.png` — GET с ответом.
+- `screenshots/11-api-post.png` — POST с `id: 101`.
+- `screenshots/11-api-put.png` — PUT с обновлённым заголовком.
+- `screenshots/11-api-delete.png` — DELETE (empty object).
+- `screenshots/11-api-page-1.png` — Preview после «Создать пост».
+- `screenshots/11-api-page-2.png` — Preview после «Получить пост».
+- `screenshots/11-api-page-3.png` — Preview после «Обновить пост».
+- `screenshots/11-api-page-4.png` — Preview после «Удалить пост».
+- `screenshots/11-api-workflow.png` — workflow одной из кнопок.
+
+### Объяснение для защиты
+
+«Подключила публичный API **jsonplaceholder** через встроенный **API Connector** Bubble. Настроила 4 эндпоинта: GET, POST, PUT, DELETE. Для каждого создала кнопку на странице `api-demo`. Результат каждого вызова сохраняется в **Data Type `ApiResponse`** и отображается в **Repeating Group**. Перед сохранением нового результата старые записи удаляются — список показывает **только последний результат**. DELETE возвращает пустой объект — для него создаётся запись со статичным текстом «Пост удален», чтобы визуально показать результат. jsonplaceholder — тестовый API, он **не сохраняет изменения** между вызовами, но **все 4 метода успешно работают** — это видно по ответам в API Connector.»
+
+## Ссылки
+
+- **Dev-версия приложения:** `https://my-app-261014-18320.bubbleapps.io/version-test/api-demo`
+
+## Выводы
+
+В ходе работы я освоила **Bubble** как no-code платформу: генерацию приложения через AI-агента, ручную доработку UI, работу с **Global variables** и **стилями**, проектирование **базы данных** и настройку **workflows для CRUD**.
+
+Отдельно разобралась с **API Connector**: подключила внешний API, настроила 4 вызова (GET, POST, PUT, DELETE), реализовала **сохранение и отображение результата** на странице.
+
+Главный практический вывод: **AI-агент сильно ускоряет** создание каркаса приложения, но **финальную логику и UI нужно проверять и дорабатывать вручную** — особенно в части условий видимости, работы с данными и API.
