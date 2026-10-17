@@ -52,20 +52,7 @@
 - **Basic LLM Chain** — цепочка с LLM.
 - **Ollama Chat Model** — локальная модель через Ollama.
 
-## Скриншоты
-
-Все скриншоты — в папке `screenshots/`:
-
-- `01-version.png` — версия n8n (2.43.7).
-- `02-manual-set.png` — flow-01: Manual → Set → Code.
-- `03-code.png` — flow-02: Manual → Code → NoOp.
-- `04-if.png` — flow-03: Manual → Code → IF → 2× NoOp.
-- `05-set.png` — flow-04: Manual → Set → Code.
-- `06-http.png` — flow-05: Manual → HTTP Request → Code.
-- `07-schedule.png` — flow-06: Schedule → Code.
-- `08-redis-set.png` — flow-09: Redis Set → Get.
-- `09-redis-delete.png` — flow-10: Redis Delete → Get.
-- `11-ollama.png` — flow-11: Ollama (Ачивка 1.1).
+---
 
 ## Часть 2. Workflows
 
@@ -101,6 +88,8 @@
 - **Schedule Trigger**: каждую минуту.
 - **Code**: возвращает текущее время.
 
+---
+
 ## Часть 3. Redis
 
 - **Redis** запущен в Docker на порту **6380** (6379 был занят другим контейнером).
@@ -109,6 +98,8 @@
 - **Workflow 10-redis-delete**: Delete → Get. Результат: `propertyName: null` (ключа нет).
 
 Подробнее — в `docs/redis.md`.
+
+---
 
 ## Часть 4. Ачивка 1.1 — Ollama
 
@@ -119,11 +110,59 @@
 - **Промпт**: «Расскажи интересный факт про кошек».
 - **Результат**: модель ответила текстом про кошек.
 
+---
+
+## Скриншоты
+
+### Версия n8n
+
+![Версия n8n](../screenshots/01-version.png)
+
+### Flow-01: Manual Trigger → Set → Code
+
+![flow-01](../screenshots/01-manual-set.png)
+
+### Flow-02: Code node
+
+![flow-02](../screenshots/02-code.png)
+
+### Flow-03: IF node
+
+![flow-03](../screenshots/03-if.png)
+
+### Flow-04: Set node с timestamp
+
+![flow-04](../screenshots/04-set.png)
+
+### Flow-05: HTTP Request
+
+![flow-05](../screenshots/05-http.png)
+
+### Flow-06: Schedule Trigger
+
+![flow-06](../screenshots/06-schedule.png)
+
+### Flow-09: Redis Set → Get
+
+![flow-09](../screenshots/08-redis-set.png)
+
+### Flow-10: Redis Delete → Get
+
+![flow-10](../screenshots/09-redis-delete.png)
+
+### Flow-11: Ollama (Ачивка 1.1)
+
+![flow-11](../screenshots/11-ollama.png)
+
+---
+
 ## Выводы
 
 В ходе работы я освоила **n8n** как low-code платформу: установку в Docker, базовые и продвинутые ноды (Set, Code, IF, HTTP Request, Schedule), работу с **Redis** (создание, чтение, удаление ключей). Отдельно разобралась с **локальными LLM** через **Ollama**: скачала модель, подключила к n8n и использовала в workflow.
 
 Главный практический вывод: **n8n** — мощный инструмент для автоматизации. Он сложнее Node-RED, но даёт **больше контроля** и **готовые ноды** для AI, Redis, HTTP. **Ollama** позволяет запускать **локальные модели бесплатно**, без интернета и API-ключей — это удобно для прототипирования и тестов.
+
+---
 
 ## Ачивка 1.1 — объяснение для защиты
 
