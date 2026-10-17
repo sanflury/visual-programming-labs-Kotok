@@ -99,9 +99,7 @@ Manual Trigger → Redis (Delete) → Redis (Get) → Code
 
 **`exists: false`** — значит, удаление сработало.
 
-**Скриншоты:**
-- `screenshots/09-redis-delete.png` — workflow.
-- `screenshots/10-redis-delete-output.png` — Output в JSON.
+**Скриншот:** `screenshots/09-redis-delete.png` (workflow с Output внизу).
 
 **Экспорт:** `flows/flow-10-redis-delete.json`.
 
