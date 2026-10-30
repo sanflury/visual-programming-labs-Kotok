@@ -80,3 +80,22 @@
 - **lab2. Ачивка 4** — Swagger / OpenAPI документация: реализована вручную через HTML-страницу `api-docs.html`, доступную по `/docs`.
 - **lab3. Ачивка 1** — API Connector: подключён JSONPlaceholder, 4 эндпоинта (GET, POST, PUT, DELETE), документация в `lab3/docs/api.md`.
 - **lab4. Ачивка 1.1** — Ollama: подключена локальная LLM, использована в workflow `11-ollama`.
+
+### lab5/ — TypeBot (чат-боты)
+
+- `docs/report.md` — отчёт по лабораторной работе №5.
+- `exports/typebot-export-lab5-kotok-bot-ovbdxtt.json` — экспорт flow.
+- `screenshots/` — скриншоты шагов.
+
+**Ссылка на бота:** [https://typebot.co/lab5-kotok-bot-ovbdxtt](https://typebot.co/lab5-kotok-bot-ovbdxtt)
+
+### lab6/ — Kodular
+
+- `docs/report.md` — отчёт по лабораторной работе №6.
+- `exports/Lab6Kotok.aia` — экспорт проекта.
+- `screenshots/` — скриншоты дизайна и блоков.
+
+### Ачивки
+
+- **lab5** — Трек C (TypeBot), бот опубликован.
+- **lab6** — базовое приложение «Приветствие».
